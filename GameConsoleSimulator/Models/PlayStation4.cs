@@ -7,16 +7,12 @@ namespace GameConsoleSimulator.Models
     {
         public PlayStation4()
         {
-            DefaultVideoResolution = new Size(width: 640, height: 480);
+            DefaultVideoResolution = new Size(width: 1920, height: 1080);
         }
         
         public override AVInterface VideoConnectorType
         {
-            get
-            {
-                //hint: you'll want to replace the line below with a "return <something>;" statement
-                throw new Exception("PS4's get VideoConnectorType isn't implemented yet!");
-            }
+            get { return AVInterface.HDMI; }
         }
         
         public override void ShowWelcomeScreen()
