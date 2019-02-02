@@ -9,9 +9,9 @@ namespace GameConsoleSimulator.Models
         public Size DefaultVideoResolution;
         public abstract AVInterface VideoConnectorType { get; }
         public List<User> Users = new List<User>();
-        public User CurrentUser { get; } = null;
+        public User CurrentUser { get; private set; } = null;
         public SortedSet<Game> InstalledGames = new SortedSet<Game>();
-        public Game CurrentGame { get; } = null;
+        public Game CurrentGame { get; private set; } = null;
         
         /// <summary>
         /// Registers user to use this console by adding them to the Users list
