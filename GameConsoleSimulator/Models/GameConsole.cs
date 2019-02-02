@@ -10,7 +10,7 @@ namespace GameConsoleSimulator.Models
         public abstract AVInterface VideoConnectorType { get; }
         public List<User> Users = new List<User>();
         public User CurrentUser { get; } = null;
-        public List<Game> InstalledGames = new List<Game>();
+        public SortedSet<Game> InstalledGames = new SortedSet<Game>();
         public Game CurrentGame { get; } = null;
         
         /// <summary>
