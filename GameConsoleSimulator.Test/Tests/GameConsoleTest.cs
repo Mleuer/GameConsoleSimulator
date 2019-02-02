@@ -58,6 +58,7 @@ namespace GameConsoleSimulator.Test.Tests
         {
             var console = new GenericGameConsole();
             var kyle = new User(Name: "Kyle", Password: "l;33tboi469");
+            console.AddUser(kyle);
             
             console.Login(username: kyle.Name, password: kyle.Password);
             
