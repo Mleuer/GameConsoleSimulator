@@ -11,6 +11,7 @@ namespace GameConsoleSimulator.Models
         public List<User> Users = new List<User>();
         public User CurrentUser { get; } = null;
         public List<Game> InstalledGames = new List<Game>();
+        public Game CurrentGame { get; } = null;
         
         /// <summary>
         /// Registers user to use this console by adding them to the Users list
@@ -27,7 +28,6 @@ namespace GameConsoleSimulator.Models
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns>True if the user logged in successfully, false if not</returns>
-        /// <exception cref="Exception"></exception>
         public bool Login(String username, String password)
         {
             throw new Exception("Login() doesn't do anything yet!");            
@@ -40,6 +40,26 @@ namespace GameConsoleSimulator.Models
         public void InstallGame(Game game)
         {
             throw new Exception("InstallGame() doesn't do anything yet!");
+        }
+        
+        /// <summary>
+        /// Removes the given Game from the list of installed games. If this game isn't found
+        /// among the list of installed games, it does nothing.
+        /// </summary>
+        /// <param name="game">The Game to uninstall</param>
+        public void UninstallGame(Game game)
+        {
+            throw new Exception("UninstallGame() doesn't do anything yet!");
+        }
+        
+        /// <summary>
+        /// If the provided Game is installed on this console, the CurrentGame is set to the game
+        /// given. Otherwise this does nothing.
+        /// </summary>
+        /// <param name="game"></param>
+        public void Play(Game game)
+        {
+            throw new Exception("Play() doesn't do anything yet!");
         }
 
         /// <summary>

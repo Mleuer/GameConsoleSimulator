@@ -6,12 +6,12 @@ namespace GameConsoleSimulator.Test.Tests
     public class PlayStation4Test
     {
         [Test]
-        public void AGamingPCsDefaultResolutionShouldBe1080p()
+        public void APS4sDefaultResolutionShouldBe1080p()
         {
             var ps4 = new PlayStation4();
             
-            Assert.AreEqual(expected: ps4.DefaultVideoResolution.Width, 1920);
-            Assert.AreEqual(expected: ps4.DefaultVideoResolution.Width, 1080);
+            Assert.AreEqual(1920, ps4.DefaultVideoResolution.Width);
+            Assert.AreEqual(1080, ps4.DefaultVideoResolution.Width);
         }
         
         [Test]

@@ -9,9 +9,9 @@ namespace GameConsoleSimulator.Test.Tests
         public void AGamingPCsDefaultResolutionShouldBe4K()
         {
             GameConsole gamingPC = new GamingPC();
-            
-            Assert.AreEqual(expected: gamingPC.DefaultVideoResolution.Width, 3840);
-            Assert.AreEqual(expected: gamingPC.DefaultVideoResolution.Width, 2160);
+
+            Assert.AreEqual(expected: 3840, actual: gamingPC.DefaultVideoResolution.Width);
+            Assert.AreEqual(expected: 2160, actual: gamingPC.DefaultVideoResolution.Height);
         }
         
         [Test]
