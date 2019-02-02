@@ -1,0 +1,13 @@
+\.DS_Store
+
+packages/
+.idea/
+.vs/
+
+GameConsoleSimulator.sln.DotSettings.user
+
+GameConsoleSimulator/bin/
+GameConsoleSimulator/obj/
+
+GameConsoleSimulator.Test/bin/
+GameConsoleSimulator.Test/obj
