@@ -11,7 +11,7 @@ namespace GameConsoleSimulator.Test.Tests
             var ps4 = new PlayStation4();
             
             Assert.AreEqual(1920, ps4.DefaultVideoResolution.Width);
-            Assert.AreEqual(1080, ps4.DefaultVideoResolution.Width);
+            Assert.AreEqual(1080, ps4.DefaultVideoResolution.Height);
         }
         
         [Test]
