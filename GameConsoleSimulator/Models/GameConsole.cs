@@ -43,7 +43,8 @@ namespace GameConsoleSimulator.Models
         }
         
         /// <summary>
-        /// Removes the given Game from the list of installed games. If this game isn't found
+        /// Removes the given Game from the list of installed games, and quits it 
+        /// if the game to uninstall is the CurrentGame. If this game isn't found
         /// among the list of installed games, it does nothing.
         /// </summary>
         /// <param name="game">The Game to uninstall</param>
@@ -60,6 +61,14 @@ namespace GameConsoleSimulator.Models
         public void Play(Game game)
         {
             throw new Exception("Play() doesn't do anything yet!");
+        }
+        
+        /// <summary>
+        /// Sets the CurrentGame to null
+        /// </summary>
+        public void QuitCurrentGame()
+        {
+            throw new Exception("QuitCurrentGame() doesn't do anything yet!");
         }
 
         /// <summary>
