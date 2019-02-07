@@ -7,6 +7,7 @@ using System.Reflection;
 using C5;
 using GameConsoleSimulator.Utility;
 using SFML.System;
+using SFML.Graphics;
 
 namespace GameConsoleSimulator.Util
 {
@@ -219,7 +220,7 @@ namespace GameConsoleSimulator.Util
             double scalingValueX  = (float)targetResolution.Width / (float)sprite.Texture.Size.X;
             double scalingValueY = (float)targetResolution.Height / (float)sprite.Texture.Size.Y;
 
-            sprite.Scale = new Vec2<double>(scalingValueX, scalingValueY);
+            sprite.Scale = new SFML.Window.Vector2f((float)scalingValueX, (float)scalingValueY);
         }        
     }
     

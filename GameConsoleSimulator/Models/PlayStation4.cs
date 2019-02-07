@@ -1,5 +1,8 @@
 using System;
+using System.IO;
+using System.Threading;
 using GameConsoleSimulator.Util;
+using SFML.Audio; 
 
 namespace GameConsoleSimulator.Models
 {
@@ -18,11 +21,19 @@ namespace GameConsoleSimulator.Models
                 throw new Exception("PS4's get VideoConnectorType isn't implemented yet!");
             }
         }
-        
+
         public override void ShowWelcomeScreen()
         {
-            //don't worry about this yet
-            throw new System.NotImplementedException();
+            Stream soundFile =
+                new FileStream("/Users/matthewleuer/Developer/GameConsoleSimulator/GameConsoleSimulator/Assets/Sounds/PlayStation Startup Tone.flac",
+                    FileMode.Open);
+            
+            var music = new SoundBuffer(soundFile);
+            var startUpSound = new SFML.Audio.Sound(music);
+            startUpSound.Play();
+            
+            Thread.Sleep(TimeSpan.FromSeconds(20));
+       
         }
     }
 }

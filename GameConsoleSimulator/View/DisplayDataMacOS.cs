@@ -1,8 +1,8 @@
 ﻿using SFML.Window;
 using MonoMac.CoreVideo;
-using Chess.Utility;
+using GameConsoleSimulator.Util;
 
-namespace Chess.View
+namespace GameConsoleSimulator.View
 {
     public static class DisplayData
     {

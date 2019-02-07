@@ -19,7 +19,7 @@ namespace GameConsoleSimulator.Models
         /// <param name="user">The user to add</param>
         public void AddUser(User user)
         {
-            throw new Exception("AddUser() doesn't do anything yet!");
+            this.Users.Add(user);
         }
         
         /// <summary>
@@ -30,7 +30,23 @@ namespace GameConsoleSimulator.Models
         /// <returns>True if the user logged in successfully, false if not</returns>
         public bool Login(String username, String password)
         {
-            throw new Exception("Login() doesn't do anything yet!");            
+            bool successfulLogin = false;
+            
+            foreach (var registeredUser in Users)    
+            {
+                if (username == registeredUser.Name)
+                {
+                    if (password == registeredUser.Password)
+                    {
+                        this.CurrentUser = registeredUser;
+                        successfulLogin = true;
+                        
+                        return successfulLogin;
+                    }
+                }
+            }
+
+            return successfulLogin;
         }
         
         /// <summary>
@@ -39,7 +55,7 @@ namespace GameConsoleSimulator.Models
         /// <param name="game">The Game to install</param>
         public void InstallGame(Game game)
         {
-            throw new Exception("InstallGame() doesn't do anything yet!");
+            this.InstalledGames.Add(game);
         }
         
         /// <summary>
@@ -50,7 +66,12 @@ namespace GameConsoleSimulator.Models
         /// <param name="game">The Game to uninstall</param>
         public void UninstallGame(Game game)
         {
-            throw new Exception("UninstallGame() doesn't do anything yet!");
+            if (InstalledGames.Contains(game))
+            {
+                this.InstalledGames.Remove(game);
+                this.QuitCurrentGame();
+            }
+            
         }
         
         /// <summary>
@@ -60,7 +81,10 @@ namespace GameConsoleSimulator.Models
         /// <param name="game"></param>
         public void Play(Game game)
         {
-            throw new Exception("Play() doesn't do anything yet!");
+            if (InstalledGames.Contains(game))
+            {
+                this.CurrentGame = game;
+            }
         }
         
         /// <summary>
@@ -68,7 +92,7 @@ namespace GameConsoleSimulator.Models
         /// </summary>
         public void QuitCurrentGame()
         {
-            throw new Exception("QuitCurrentGame() doesn't do anything yet!");
+            this.CurrentGame = null;
         }
 
         /// <summary>

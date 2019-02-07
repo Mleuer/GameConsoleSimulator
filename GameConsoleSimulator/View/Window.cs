@@ -50,7 +50,7 @@ namespace GameConsoleSimulator.View
 		public void DisplayText(string chars, TrueColor color, Vec2<uint> where) 
 		{
 			Text.DisplayedString = chars;
-			Text.FillColor = color.ConvertToSFMLColorType();
+			Text.Color = color.ConvertToSFMLColorType();
 
 			var textSize = Text.GetLocalBounds();
 
@@ -58,7 +58,7 @@ namespace GameConsoleSimulator.View
 
 			Vec2<uint> adjustedPos = where - middle;
 
-			Text.Position = adjustedPos;
+			Text.Position = new Vector2f(adjustedPos.X, adjustedPos.Y);
 
 			Draw(Text);
 		}

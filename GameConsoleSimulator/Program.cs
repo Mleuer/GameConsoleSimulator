@@ -1,3 +1,4 @@
+using GameConsoleSimulator.Models;
 using GameConsoleSimulator.View;
 
 namespace GameConsoleSimulator
@@ -7,12 +8,8 @@ namespace GameConsoleSimulator
     {
         public static void Main()
         {
-            var window = new Window("Main Window");
-
-            while (true)
-            {
-            
-            }
+            var ps4 = new PlayStation4();
+            ps4.ShowWelcomeScreen();
         }
     } 
     
