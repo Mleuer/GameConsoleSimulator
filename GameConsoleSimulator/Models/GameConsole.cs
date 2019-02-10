@@ -48,7 +48,7 @@ namespace GameConsoleSimulator.Models
 
             return successfulLogin;
         }
-        
+
         /// <summary>
         /// Adds a game to the console's list of installed games
         /// </summary>
@@ -56,6 +56,14 @@ namespace GameConsoleSimulator.Models
         public void InstallGame(Game game)
         {
             this.InstalledGames.Add(game);
+        }
+
+        public void InstallGames(params Game[] games)
+        {
+            foreach (var game in games)
+            {
+                this.InstallGame(game);
+            }
         }
         
         /// <summary>
@@ -68,8 +76,12 @@ namespace GameConsoleSimulator.Models
         {
             if (InstalledGames.Contains(game))
             {
-                this.InstalledGames.Remove(game);
-                this.QuitCurrentGame();
+                this.InstalledGames.Remove(game); 
+                
+                if (game == CurrentGame)
+                {
+                    this.QuitCurrentGame();
+                }
             }
             
         }

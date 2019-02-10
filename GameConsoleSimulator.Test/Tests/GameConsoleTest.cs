@@ -126,7 +126,21 @@ namespace GameConsoleSimulator.Test.Tests
 
             console.UninstallGame(me2);
             
-            Assert.Null(console.CurrentGame);
+            Assert.Null(console.CurrentGame);    
+        }
+
+        [Test]
+
+        public void OnlyTheGameBeingUninstalledShouldBeStopped()
+        {
+            var console = new GenericGameConsole();
+            var me2 = new Game { Title = "Mass Effect 2" };
+            var apex = new Game { Title = "Apex Legends" };
+            console.InstallGames(me2, apex);
+            console.Play(apex);
+            console.UninstallGame(me2);
+            
+            Assert.AreSame(apex, console.CurrentGame);
         }
     }
 }
