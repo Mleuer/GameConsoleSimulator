@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using GameConsoleSimulator.Util;
 using SFML.Graphics;
+using GameConsoleSimulator.Util;
 
 namespace GameConsoleSimulator.Models
 {
@@ -110,12 +110,12 @@ namespace GameConsoleSimulator.Models
         {
             this.CurrentGame = null;
         }
-        public abstract void StartVideoDisplay();
+        public abstract void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor);
         
         /// <summary>
         /// Shows a welcome splash screen
         /// </summary>
-        public abstract void ShowWelcomeScreen();
+        public abstract void RunStartupRoutine();
     }
 
     public enum AVInterface

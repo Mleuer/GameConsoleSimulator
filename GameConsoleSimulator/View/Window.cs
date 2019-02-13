@@ -1,9 +1,11 @@
 using SFML.Graphics;
 using SFML.Window;
+using SFML.System;
 
 using GameConsoleSimulator.Utility;
 using GameConsoleSimulator.Config;
 using GameConsoleSimulator.Util;
+
 
 namespace GameConsoleSimulator.View
 {
@@ -50,7 +52,7 @@ namespace GameConsoleSimulator.View
 		public void DisplayText(string chars, TrueColor color, Vec2<uint> where) 
 		{
 			Text.DisplayedString = chars;
-			Text.Color = color.ConvertToSFMLColorType();
+			Text.FillColor = color.ConvertToSFMLColorType();
 
 			var textSize = Text.GetLocalBounds();
 

@@ -1,4 +1,5 @@
 using System;
+using SFML.Graphics;
 using GameConsoleSimulator.Util;
 
 namespace GameConsoleSimulator.Models
@@ -19,12 +20,12 @@ namespace GameConsoleSimulator.Models
             }
         }
 
-        public override void StartVideoDisplay()
+        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
         {
             throw new NotImplementedException();
         }
 
-        public override void ShowWelcomeScreen()
+        public override void RunStartupRoutine()
         {
             //don't worry about this yet
             throw new System.NotImplementedException();

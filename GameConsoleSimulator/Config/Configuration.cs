@@ -1,5 +1,5 @@
-﻿using SFML.Window;
-using GameConsoleSimulator.Utility;
+﻿using System;
+using SFML.Window;
 using GameConsoleSimulator.Util;
 using GameConsoleSimulator.View;
 
@@ -24,6 +24,8 @@ namespace GameConsoleSimulator.Config
         public const string MainFontFilePath = "./Assets/Fonts/RobotoMono-Regular.ttf";
  
         public const uint DefaultTextCharacterSize = 60;
+
+        public static readonly TimeSpan RefreshTime = TimeSpan.FromMilliseconds(8);
     }    
 
 }

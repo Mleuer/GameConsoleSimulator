@@ -48,16 +48,20 @@
       <HintPath>..\packages\NodaTime.2.4.4\lib\net45\NodaTime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="sfmlnet-audio-2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\SFML.Net.2.1.5\lib\sfmlnet-audio-2.dll</HintPath>
+    <Reference Include="sfmlnet-audio-2, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SFML.Net.x64.2.4.0\lib\sfmlnet-audio-2.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="sfmlnet-graphics-2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\SFML.Net.2.1.5\lib\sfmlnet-graphics-2.dll</HintPath>
+    <Reference Include="sfmlnet-graphics-2, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SFML.Net.x64.2.4.0\lib\sfmlnet-graphics-2.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="sfmlnet-window-2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\SFML.Net.2.1.5\lib\sfmlnet-window-2.dll</HintPath>
+    <Reference Include="sfmlnet-system-2, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SFML.Net.x64.2.4.0\lib\sfmlnet-system-2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="sfmlnet-window-2, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SFML.Net.x64.2.4.0\lib\sfmlnet-window-2.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -75,10 +79,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="XamMac, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065" Condition=" '$(OS)' == 'Unix' ">
       <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\Current\lib\mono\XamMac.dll</HintPath>
-    </Reference>
-    <Reference Include="sfmlnet-system-2, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\SFML.Net.x64.2.4.0\lib\sfmlnet-system-2.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +104,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\README.md">
+      <Link>README.md</Link>
+    </Content>
     <Content Include="Assets\Fonts\RobotoMono-Regular.ttf" />
+    <Content Include="Assets\Bitmaps\Playstation startup image.jpg" />
     <Content Include="Assets\Sounds\PlayStation Startup Tone.flac" />
     <Content Include="Config\sfmlnet-audio-2.dll.config" />
     <Content Include="Config\sfmlnet-graphics-2.dll.config" />
@@ -144,8 +148,12 @@
     <ItemGroup>
       <Fonts Include="Assets\Fonts\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <Sounds Include="Assets\Sounds\*.*" />
+    </ItemGroup>
     <Copy SourceFiles="@(Bitmaps)" DestinationFolder="$(OutDir)\Assets\Bitmaps\" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="@(Fonts)" DestinationFolder="$(OutDir)\Assets\Fonts\" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="@(Sounds)" DestinationFolder="$(OutDir)\Assets\Sounds\" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
   </Target>
   <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.1.0.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.1.0.0\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

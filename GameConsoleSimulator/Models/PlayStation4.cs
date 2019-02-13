@@ -1,10 +1,13 @@
 using System;
 using System.IO;
 using System.Threading;
-using GameConsoleSimulator.Util;
 using SFML.Audio;
 using SFML.Graphics;
 using SFML.Window;
+
+using GameConsoleSimulator.Util;
+using static GameConsoleSimulator.Config.Configuration;
+
 
 namespace GameConsoleSimulator.Models
 {
@@ -21,10 +24,9 @@ namespace GameConsoleSimulator.Models
         
         public PlayStation4()
         {
-            DefaultVideoResolution = new Size(width: 640, height: 480);
+            DefaultVideoResolution = new Size(width: 1280, height: 720);
             var mode = new VideoMode(DefaultVideoResolution.Width, DefaultVideoResolution.Height);
             Window = new RenderWindow(mode, "PS4");
-            Window.Display();
             Running = true;
         }
         
@@ -37,20 +39,25 @@ namespace GameConsoleSimulator.Models
             }
         }
 
-        
-        public override void StartVideoDisplay()
+        /// Draws the Drawable to the display for the number of frames given by framesToDisplayFor.
+        /// For example, if the program refreshes 30 times per second, and DrawToMainDisplay()
+        /// is requested to draw a Sprite for 30 frames, the sprite will remain on screen for
+        /// 1 second.
+        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
         {
-            while (Running)
+            ulong framesShown = 0;
+            
+            while (framesShown < framesToDisplayFor)
             {
-                Window.DispatchEvents();
+                Window.Draw(drawable);
                 Window.Display();
-                Thread.Sleep(8);
+                Window.DispatchEvents();
+                Thread.Sleep(RefreshTime);
+                framesShown++;
             }
         }
 
-       
-
-        public override void ShowWelcomeScreen()
+        public override void RunStartupRoutine()
         {
             PlayStartupTone();
             ShowStartupImage();
@@ -58,21 +65,26 @@ namespace GameConsoleSimulator.Models
 
         private void ShowStartupImage()
         {
-            throw new NotImplementedException();
+            /* TODO: This method needs to somehow turn our startup screen image into something that can be drawn, then call DrawToMainDisplay()
+            to have the startup image drawn to the screen for some number of frames  */
+            
+            //First, turn our chosen startup screen image into some sort of object that can be drawn (DrawToMainDisplay()'s parameters should give you
+            //some hint as to what you'll need 
+            
+            
+            //Next, uncomment the line below, then fix it
+            //DrawToMainDisplay(??, ??);
         }
 
         private void PlayStartupTone()
         {
-            Stream soundFile =
-                new FileStream(
-                    "/Users/matthewleuer/Developer/GameConsoleSimulator/GameConsoleSimulator/Assets/Sounds/PlayStation Startup Tone.flac",
-                    FileMode.Open);
-
-            var music = new SoundBuffer(soundFile);
-            var startUpSound = new SFML.Audio.Sound(music);
-            startUpSound.Play();
-
-            Thread.Sleep(TimeSpan.FromSeconds(20));
+            string applicationDirectory   = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            char slash = Path.DirectorySeparatorChar;
+            String startupToneSoundFile = applicationDirectory + $"{slash}Assets{slash}Sounds{slash}PlayStation Startup Tone.flac";
+            var startupToneSoundBuffer = new SoundBuffer(filename: startupToneSoundFile);
+            SFML.Audio.Sound startupTone = new Sound(startupToneSoundBuffer);
+            
+            startupTone.Play();
         }
         
         

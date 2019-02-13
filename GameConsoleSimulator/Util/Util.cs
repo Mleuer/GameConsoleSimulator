@@ -220,7 +220,7 @@ namespace GameConsoleSimulator.Util
             double scalingValueX  = (float)targetResolution.Width / (float)sprite.Texture.Size.X;
             double scalingValueY = (float)targetResolution.Height / (float)sprite.Texture.Size.Y;
 
-            sprite.Scale = new SFML.Window.Vector2f((float)scalingValueX, (float)scalingValueY);
+            sprite.Scale = new Vector2f((float)scalingValueX, (float)scalingValueY);
         }        
     }
     

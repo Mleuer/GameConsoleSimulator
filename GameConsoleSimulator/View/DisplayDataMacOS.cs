@@ -1,5 +1,6 @@
 ﻿using SFML.Window;
 using MonoMac.CoreVideo;
+
 using GameConsoleSimulator.Util;
 
 namespace GameConsoleSimulator.View
