@@ -11,6 +11,11 @@ namespace GameConsoleSimulator.Models
             }
         }
 
+        public override void StartVideoDisplay()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void ShowWelcomeScreen()
         {
             throw new System.NotImplementedException();

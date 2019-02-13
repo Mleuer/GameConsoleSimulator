@@ -18,7 +18,12 @@ namespace GameConsoleSimulator.Models
                 throw new Exception("GamingPC's get VideoConnectorType isn't implemented yet!");
             }
         }
-        
+
+        public override void StartVideoDisplay()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void ShowWelcomeScreen()
         {
             //don't worry about this yet

@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
 using GameConsoleSimulator.Util;
+using SFML.Graphics;
 
 namespace GameConsoleSimulator.Models
 {
     public abstract class GameConsole
     {
         public Size DefaultVideoResolution;
+        protected RenderWindow Window;
         public abstract AVInterface VideoConnectorType { get; }
         public List<User> Users = new List<User>();
         public User CurrentUser { get; private set; } = null;
         public SortedSet<Game> InstalledGames = new SortedSet<Game>();
         public Game CurrentGame { get; private set; } = null;
+        public bool Running { get; set; } = false;
+        
         
         /// <summary>
         /// Registers user to use this console by adding them to the Users list
@@ -106,7 +110,8 @@ namespace GameConsoleSimulator.Models
         {
             this.CurrentGame = null;
         }
-
+        public abstract void StartVideoDisplay();
+        
         /// <summary>
         /// Shows a welcome splash screen
         /// </summary>
