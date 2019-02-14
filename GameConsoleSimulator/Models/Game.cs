@@ -5,6 +5,13 @@ namespace GameConsoleSimulator.Models
     public class Game : IComparable, IComparable<Game>
     {
         public String Title { get; set; }
+
+        public GameConsole Console { get; set; } = null;
+
+        public virtual void Play()
+        {
+            
+        }
         
         public int CompareTo(object obj)
         {

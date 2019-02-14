@@ -59,6 +59,7 @@ namespace GameConsoleSimulator.Models
         /// <param name="game">The Game to install</param>
         public void InstallGame(Game game)
         {
+            game.Console = this;
             this.InstalledGames.Add(game);
         }
 
@@ -80,7 +81,8 @@ namespace GameConsoleSimulator.Models
         {
             if (InstalledGames.Contains(game))
             {
-                this.InstalledGames.Remove(game); 
+                this.InstalledGames.Remove(game);
+                game.Console = null;
                 
                 if (game == CurrentGame)
                 {
@@ -100,6 +102,7 @@ namespace GameConsoleSimulator.Models
             if (InstalledGames.Contains(game))
             {
                 this.CurrentGame = game;
+                game.Play();
             }
         }
         

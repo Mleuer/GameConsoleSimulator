@@ -13,7 +13,11 @@ namespace GameConsoleSimulator.Models.Games
 		{
 			var normandyTexture = new Texture($"{ImageFileDirectoryPath}{Slash}Normandy.png");
 			Normandy = new GameObject(normandyTexture);
+		}
 
+		public override void Play()
+		{
+			base.Play();
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using GameConsoleSimulator.Models;
+using GameConsoleSimulator.Models.Games;
 
 namespace GameConsoleSimulator
 {
@@ -11,6 +12,10 @@ namespace GameConsoleSimulator
         {
             var ps4 = new PlayStation4();  
             ps4.RunStartupRoutine();
+            
+            Game massEffect = new MassEffect();
+            ps4.InstallGame(massEffect);
+            
             Thread.Sleep(TimeSpan.FromSeconds(20));
         }
     } 
