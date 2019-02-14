@@ -12,7 +12,7 @@ namespace GameConsoleSimulator.Models
             }
         }
 
-        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Sprite sprite, ulong framesToDisplayFor)
         {
             throw new System.NotImplementedException();
         }

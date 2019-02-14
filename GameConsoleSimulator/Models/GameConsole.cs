@@ -110,7 +110,7 @@ namespace GameConsoleSimulator.Models
         {
             this.CurrentGame = null;
         }
-        public abstract void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor);
+        public abstract void DrawToMainDisplay(Sprite sprite, ulong framesToDisplayFor);
         
         /// <summary>
         /// Shows a welcome splash screen

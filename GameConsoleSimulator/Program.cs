@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using GameConsoleSimulator.Models;
 
 namespace GameConsoleSimulator
@@ -9,6 +11,7 @@ namespace GameConsoleSimulator
         {
             var ps4 = new PlayStation4();  
             ps4.RunStartupRoutine();
+            Thread.Sleep(TimeSpan.FromSeconds(20));
         }
     } 
     

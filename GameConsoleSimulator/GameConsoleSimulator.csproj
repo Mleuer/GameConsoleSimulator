@@ -108,7 +108,6 @@
       <Link>README.md</Link>
     </Content>
     <Content Include="Assets\Fonts\RobotoMono-Regular.ttf" />
-    <Content Include="Assets\Bitmaps\Playstation startup image.jpg" />
     <Content Include="Assets\Sounds\PlayStation Startup Tone.flac" />
     <Content Include="Config\sfmlnet-audio-2.dll.config" />
     <Content Include="Config\sfmlnet-graphics-2.dll.config" />

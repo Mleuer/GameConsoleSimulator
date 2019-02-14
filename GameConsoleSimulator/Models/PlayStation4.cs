@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net.Mime;
 using System.Threading;
 using SFML.Audio;
 using SFML.Graphics;
@@ -43,13 +44,13 @@ namespace GameConsoleSimulator.Models
         /// For example, if the program refreshes 30 times per second, and DrawToMainDisplay()
         /// is requested to draw a Sprite for 30 frames, the sprite will remain on screen for
         /// 1 second.
-        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Sprite sprite, ulong framesToDisplayFor)
         {
             ulong framesShown = 0;
             
             while (framesShown < framesToDisplayFor)
             {
-                Window.Draw(drawable);
+                Window.Draw(sprite);
                 Window.Display();
                 Window.DispatchEvents();
                 Thread.Sleep(RefreshTime);
@@ -65,15 +66,10 @@ namespace GameConsoleSimulator.Models
 
         private void ShowStartupImage()
         {
-            /* TODO: This method needs to somehow turn our startup screen image into something that can be drawn, then call DrawToMainDisplay()
-            to have the startup image drawn to the screen for some number of frames  */
+            Texture texture = new Texture("/Users/matthewleuer/Developer/GameConsoleSimulator/GameConsoleSimulator/Assets/Bitmaps/PlayStationStartupScreen.png");
+            Sprite sprite = new Sprite(texture);
             
-            //First, turn our chosen startup screen image into some sort of object that can be drawn (DrawToMainDisplay()'s parameters should give you
-            //some hint as to what you'll need 
-            
-            
-            //Next, uncomment the line below, then fix it
-            //DrawToMainDisplay(??, ??);
+            DrawToMainDisplay(sprite, 1000 );
         }
 
         private void PlayStartupTone()
