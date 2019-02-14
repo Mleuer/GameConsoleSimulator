@@ -5,10 +5,10 @@ using GameConsoleSimulator.Models;
 
 namespace GameConsoleSimulator.Test.Tests
 {
-    public class GameConsoleTest
+    public static class GameConsoleTest
     {
         [Test]
-        public void ANewlyRegisteredUserShouldAppearInTheListOfUsers()
+        public static void ANewlyRegisteredUserShouldAppearInTheListOfUsers()
         {
             var console = new GenericGameConsole();
             var kyle = new User(Name: "Kyle", Password: "l;33tboi469");
@@ -19,7 +19,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
 
         [Test]
-        public void ARegisteredUserCanLogin()
+        public static void ARegisteredUserCanLogin()
         {
             var console = new GenericGameConsole();
             var dad = new User(Name: "Stephen", Password:"#123");
@@ -33,7 +33,7 @@ namespace GameConsoleSimulator.Test.Tests
         
         
         [Test]
-        public void AnUnRegisteredUsersShouldNotBeAbleToLogIn()
+        public static void AnUnRegisteredUsersShouldNotBeAbleToLogIn()
         {
             var console = new GenericGameConsole();            
             var dad = new User(Name: "Stephen", Password: "#123");
@@ -45,7 +45,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
 
         [Test]
-        public void TheCurrentUserShouldBeTheMostRecentToLogIn()
+        public static void TheCurrentUserShouldBeTheMostRecentToLogIn()
         {
             var console = new GenericGameConsole();
             var kyle = new User(Name: "Kyle", Password: "l;33tboi469");
@@ -61,7 +61,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
         
         [Test]
-        public void ANewlyInstalledGameShouldAppearInTheListOfInstalledGames()
+        public static void ANewlyInstalledGameShouldAppearInTheListOfInstalledGames()
         {
             GameConsole console = new GenericGameConsole();
             var superman64 = new Game { Title = "Superman 64" };
@@ -80,7 +80,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
         
         [Test]
-        public void AGameCanNotBePlayedIfItIsNotAlreadyInstalled()
+        public static void AGameCanNotBePlayedIfItIsNotAlreadyInstalled()
         {
             var console = new GenericGameConsole();
             var me2 = new Game { Title = "Mass Effect 2" };
@@ -92,7 +92,7 @@ namespace GameConsoleSimulator.Test.Tests
 
         
         [Test]
-        public void TheGamePlayedShouldBeTheCurrentGame()
+        public static void TheGamePlayedShouldBeTheCurrentGame()
         {
             var console = new GenericGameConsole();
             var me2 = new Game { Title = "Mass Effect 2" };
@@ -104,7 +104,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
 
         [Test]
-        public void QuitCurrentGameShouldSetTheCurrentGameToNull()
+        public static void QuitCurrentGameShouldSetTheCurrentGameToNull()
         {
             var console = new GenericGameConsole();
             var me2 = new Game { Title = "Mass Effect 2" };
@@ -117,7 +117,7 @@ namespace GameConsoleSimulator.Test.Tests
         }
                 
         [Test]
-        public void AGameCanNotBePlayedIfItWasUninstalled()
+        public static void AGameCanNotBePlayedIfItWasUninstalled()
         {
             var console = new GenericGameConsole();
             var me2 = new Game { Title = "Mass Effect 2" };
@@ -131,7 +131,7 @@ namespace GameConsoleSimulator.Test.Tests
 
         [Test]
 
-        public void OnlyTheGameBeingUninstalledShouldBeStopped()
+        public static void OnlyTheGameBeingUninstalledShouldBeStopped()
         {
             var console = new GenericGameConsole();
             var me2 = new Game { Title = "Mass Effect 2" };

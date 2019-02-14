@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\AngleTest.cs" />
     <Compile Include="Tests\GameConsoleTest.cs" />
+    <Compile Include="Tests\GameObjectTest.cs" />
     <Compile Include="Tests\GamingPCTest.cs" />
     <Compile Include="Tests\PS4ProTest.cs" />
     <Compile Include="Tests\PlayStation4Test.cs" />

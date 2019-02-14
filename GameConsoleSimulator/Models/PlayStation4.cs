@@ -8,6 +8,7 @@ using SFML.Window;
 
 using GameConsoleSimulator.Util;
 using static GameConsoleSimulator.Config.Configuration;
+using static GameConsoleSimulator.Util.Util;
 
 
 namespace GameConsoleSimulator.Models
@@ -74,7 +75,7 @@ namespace GameConsoleSimulator.Models
 
         private void PlayStartupTone()
         {
-            string applicationDirectory   = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string applicationDirectory   = GetApplicationDirectoryPath();
             char slash = Path.DirectorySeparatorChar;
             String startupToneSoundFile = applicationDirectory + $"{slash}Assets{slash}Sounds{slash}PlayStation Startup Tone.flac";
             var startupToneSoundBuffer = new SoundBuffer(filename: startupToneSoundFile);
@@ -82,7 +83,5 @@ namespace GameConsoleSimulator.Models
             
             startupTone.Play();
         }
-        
-        
     }
 }

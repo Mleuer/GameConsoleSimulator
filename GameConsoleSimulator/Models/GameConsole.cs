@@ -112,6 +112,11 @@ namespace GameConsoleSimulator.Models
         }
         public abstract void DrawToMainDisplay(Sprite sprite, ulong framesToDisplayFor);
         
+        public void DrawToMainDisplay(GameObject gameObject, ulong framesToDisplayFor)
+        {
+            DrawToMainDisplay(gameObject.Sprite, framesToDisplayFor);
+        }
+        
         /// <summary>
         /// Shows a welcome splash screen
         /// </summary>

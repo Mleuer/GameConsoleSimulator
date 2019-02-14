@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -13,6 +14,17 @@ namespace GameConsoleSimulator.Util
 {
     public static class Util
     {
+        public static string GetApplicationDirectoryPath()
+        {
+            string executableDirectoryPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            return executableDirectoryPath;
+        }
+
+        public static string GetSolutionDirectoryPath()
+        {
+            string solutionPath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+            return solutionPath;
+        }
                 
         public static T SelectAtRandom<T>(params T[] items) where T : class
         {
@@ -83,6 +95,85 @@ namespace GameConsoleSimulator.Util
             else
             {
                 throw new NullReferenceException();
+            }
+        }
+    }
+
+    public static class Maths
+    {
+        /*
+        * Code partial credit stackoverflow: http://stackoverflow.com/questions/4633177/c-how-to-wrap-a-float-to-the-interval-pi-pi
+        * todo: reimplement
+        */
+        public static double Modulo<FloatingPointType1, FloatingPointType2>(FloatingPointType1 inputX, FloatingPointType2 inputY) 
+        {
+            double x = (double)((dynamic)inputX); /* x is ok */
+	
+            double y = (double)((dynamic)inputY);
+
+            if (0.0 == y)
+            {
+                return x;
+            }
+	
+            double m = x - (y * ComputeFloor<double>(x /y)) ;
+	
+            // handle boundary cases resulted from floating-point cut off:
+	
+            if (y > 0) // modulo range: [0..y)
+            {
+                if (m >= y) // Modulo(-1e-16             , 360.    ): m= 360.
+                    return 0;
+		
+                if (m <0 )
+                {
+                    if ((y + m) == y)
+                    {
+                        return 0  ; // just in case...
+                    }
+                    else
+                    {
+                        return y +m; // Modulo(106.81415022205296 , _TWO_PI ): m= -1.421e-14
+                    }
+                }
+            }
+            else // modulo range: (y..0]
+            {
+                if (m <= y) // Modulo(1e-16              , -360.   ): m= -360.
+                {
+                    return 0; 
+                }
+                if (m > 0)
+                {
+                    if ((y + m) == y)
+                    {
+                        return 0  ; // just in case...
+                    }
+                    else
+                    {
+                        return y + m; // Modulo(-106.81415022205296, -_TWO_PI): m= 1.421e-14
+                    }
+                }
+            }
+	
+            return m;
+        }
+        
+        public static N ComputeFloor<N>(N x)
+        {
+            dynamic dynamicX = x;
+            if (dynamicX >= 0.0f)
+            {
+                int xInt = (int) dynamicX;
+                N result = (N) ((dynamic)xInt);
+                return result;
+            }
+            else
+            {
+                int xInt = (int) dynamicX;
+                int diff = (xInt - 1);
+                var result = (N)((dynamic) diff);
+                return result ;
             }
         }
     }
