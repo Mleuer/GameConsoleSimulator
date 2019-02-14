@@ -92,6 +92,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameConsole.cs" />
     <Compile Include="Models\GameObject.cs" />
+    <Compile Include="Models\Games\MassEffect.cs" />
     <Compile Include="Models\GamingPC.cs" />
     <Compile Include="Models\GenericGameConsole.cs" />
     <Compile Include="Models\PlayStation4.cs" />
@@ -115,6 +116,7 @@
     <Content Include="..\README.md">
       <Link>README.md</Link>
     </Content>
+    <Content Include="Assets\Bitmaps\.DS_Store" />
     <Content Include="Assets\Fonts\RobotoMono-Regular.ttf" />
     <Content Include="Assets\Sounds\PlayStation Startup Tone.flac" />
     <Content Include="Config\sfmlnet-audio-2.dll.config" />

@@ -17,7 +17,7 @@ namespace GameConsoleSimulator.Test.Tests
         [Test]
         public void APS4ShouldHaveAnHDMIConnectionByDefault()
         {
-            PlayStation4 ps4 = new PlayStation4();
+            var ps4 = new PlayStation4();
             
             Assert.AreEqual(expected: AVInterface.HDMI, actual: ps4.VideoConnectorType);
         }

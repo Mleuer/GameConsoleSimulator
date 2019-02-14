@@ -11,17 +11,19 @@ namespace System
 
 namespace GameConsoleSimulator.Utility
 {
-    public struct Vec2<N> : IEquatable<Vec2<N>>, IEquatable<(N,N)>, IIndexable<N> where N:
+    public class Vec2<N> : IEquatable<Vec2<N>>, IEquatable<(N,N)>, IIndexable<N> where N:
         struct,
         IComparable, 
         IComparable<N>, 
         IConvertible, 
         IEquatable<N>, 
-        IFormattable
+        IFormattable 
     {
 
         public N X { get; set; }
         public N Y { get; set; }
+        
+        protected Vec2() {}
         
         public Vec2(Vec2<N> other) :
             this(other.X, other.Y)
@@ -121,29 +123,29 @@ namespace GameConsoleSimulator.Utility
             }
         }
         
-        public static Boolean operator == (Vec2<N> vector0, Vec2<N> vector1)
+        public static Boolean operator == (Vec2<N> vector0, Vec2<N> vector1) 
         {
             return ((dynamic) vector0.X == (dynamic) vector1.X) &&
                    ((dynamic) vector0.Y == (dynamic) vector1.Y);
         }
         
-        public static Boolean operator == (Vec2<N> vector, (N,N) pair)
+        public static Boolean operator == (Vec2<N> vector, (N,N) pair) 
         {
             return ((dynamic) vector.X == (dynamic) pair.Item1) &&
                    ((dynamic) vector.Y == (dynamic) pair.Item2);
         }
 
-        public static bool operator != (Vec2<N> vector, (N, N) pair)
+        public static bool operator != (Vec2<N> vector, (N, N) pair) 
         {
             return !(vector == pair);
         }
 
-        public static bool operator != (Vec2<N> vector0, Vec2<N> vector1)
+        public static bool operator != (Vec2<N> vector0, Vec2<N> vector1) 
         {
             return !(vector0 == vector1);
         }
 
-        public override Boolean Equals(object @object)
+        public override Boolean Equals(object @object) 
         {
             if (@object?.GetType() == this.GetType())
             {
@@ -159,17 +161,17 @@ namespace GameConsoleSimulator.Utility
             }
         }
 
-        public bool Equals(Vec2<N> other)
+        public bool Equals(Vec2<N> other) 
         {
             return this == other;
         }
         
-        public bool Equals((N, N) pair)
+        public bool Equals((N, N) pair) 
         {
             return this == pair;
         }
 
-        public override int GetHashCode()
+        public override int GetHashCode() 
         {
             unchecked
             {
@@ -177,12 +179,12 @@ namespace GameConsoleSimulator.Utility
             }
         }
 
-        public static Vec2<N> operator + (Vec2<N> vector0, Vec2<N> vector1)
+        public static Vec2<N> operator + (Vec2<N> vector0, Vec2<N> vector1) 
         {
             return new Vec2<N>(checked((dynamic)vector0.X + (dynamic)vector1.X), checked((dynamic) vector0.Y + (dynamic) vector1.Y));
         }
         
-        public static Vec2<long> operator + (Vec2<N> vector0, Vec2<short> vector1)
+        public static Vec2<long> operator + (Vec2<N> vector0, Vec2<short> vector1) 
         {
             Vec2<int> v0 = vector0.ConvertMemberType<int>();
             return new Vec2<long>(v0.X + vector1.X, v0.Y + vector1.Y);
@@ -217,14 +219,13 @@ namespace GameConsoleSimulator.Utility
             return new Vec2<N>(x, y);
         }
 
-        public static double Distance(Vec2<N> point0, Vec2<N> point1)
+        public static double Distance(Vec2<N> point0, Vec2<N> point1) 
         {
             Vec2<double> p0 = point0.ConvertMemberType<double>();
             Vec2<double> p1 = point1.ConvertMemberType<double>();
 
             return distance(p0, p1);
         }
-
 
         public static double Distance<M>(Vec2<N> point0, Vec2<M> point1) where M : 
             struct, 
@@ -232,7 +233,7 @@ namespace GameConsoleSimulator.Utility
             IComparable<M>, 
             IConvertible, 
             IEquatable<M>, 
-            IFormattable
+            IFormattable 
         {
             Vec2<double> p0 = point0.ConvertMemberType<double>();
             Vec2<double> p1 = point1.ConvertMemberType<double>();
@@ -240,7 +241,39 @@ namespace GameConsoleSimulator.Utility
             return distance(p0, p1);
         }
 
-        private static double distance(Vec2<double> point0, Vec2<double> point1)
+        public double Magnitude 
+        {
+            get
+            {
+                double dblX = (double) ((dynamic) X);
+                double dblY = (double) ((dynamic) Y);
+                double sumSquares = Math.Pow(dblX, 2) + Math.Pow(dblY, 2);
+                return Math.Sqrt(sumSquares);
+            }
+        }
+
+        public Vec2<double> Normalize()
+        {
+            Vec2<double> normalized = this.ConvertMemberType<double>();
+            normalized.normalize();
+            return normalized;
+        }
+        
+        protected void normalize() 
+        {
+            double magnitude = this.Magnitude;
+            
+            if ((dynamic) magnitude != 0)
+            {
+                dynamic normalX = ((dynamic) X) / ((dynamic)magnitude);
+                dynamic normalY = ((dynamic) Y) / ((dynamic)magnitude);
+
+                X = (N) normalX;
+                Y = (N) normalY;
+            }
+        }
+
+        private static double distance(Vec2<double> point0, Vec2<double> point1) 
         {
             double xDifference = point1.X - point0.X;
             double yDifference = point1.Y - point0.Y;
@@ -254,8 +287,15 @@ namespace GameConsoleSimulator.Utility
 
             return result;
         }
-
     }
-    
-    
+
+    public class NormalizedVec2<N> : Vec2<N> where N : struct, IComparable, IComparable<N>, IConvertible, IEquatable<N>, IFormattable
+    {
+        
+        public NormalizedVec2(N x, N y) :
+            base(x, y)
+        {
+            normalize();
+        }
+    }
 }

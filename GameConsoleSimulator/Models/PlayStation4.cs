@@ -45,13 +45,13 @@ namespace GameConsoleSimulator.Models
         /// For example, if the program refreshes 30 times per second, and DrawToMainDisplay()
         /// is requested to draw a Sprite for 30 frames, the sprite will remain on screen for
         /// 1 second.
-        public override void DrawToMainDisplay(Sprite sprite, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
         {
             ulong framesShown = 0;
             
             while (framesShown < framesToDisplayFor)
             {
-                Window.Draw(sprite);
+                Window.Draw(drawable);
                 Window.Display();
                 Window.DispatchEvents();
                 Thread.Sleep(RefreshTime);
@@ -62,23 +62,22 @@ namespace GameConsoleSimulator.Models
         public override void RunStartupRoutine()
         {
             PlayStartupTone();
-            ShowStartupImage();
+            ShowStartupScreen();
         }
 
-        private void ShowStartupImage()
+        private void ShowStartupScreen()
         {
-            Texture texture = new Texture("/Users/matthewleuer/Developer/GameConsoleSimulator/GameConsoleSimulator/Assets/Bitmaps/PlayStationStartupScreen.png");
-            Sprite sprite = new Sprite(texture);
+            string startupImageFilePath = $"{ImageFileDirectoryPath}{Slash}PlayStationStartupScreen.png";
+            var texture = new Texture(startupImageFilePath);
+            var sprite = new Sprite(texture);
             
             DrawToMainDisplay(sprite, 1000 );
         }
 
         private void PlayStartupTone()
         {
-            string applicationDirectory   = GetApplicationDirectoryPath();
-            char slash = Path.DirectorySeparatorChar;
-            String startupToneSoundFile = applicationDirectory + $"{slash}Assets{slash}Sounds{slash}PlayStation Startup Tone.flac";
-            var startupToneSoundBuffer = new SoundBuffer(filename: startupToneSoundFile);
+            String startupToneSoundFilePath = $"{SoundFileDirectoryPath}{Slash}PlayStation Startup Tone.flac";
+            var startupToneSoundBuffer = new SoundBuffer(filename: startupToneSoundFilePath);
             SFML.Audio.Sound startupTone = new Sound(startupToneSoundBuffer);
             
             startupTone.Play();

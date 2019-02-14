@@ -14,6 +14,8 @@ namespace GameConsoleSimulator.Util
 {
     public static class Util
     {
+        public static readonly char Slash = Path.DirectorySeparatorChar;
+
         public static string GetApplicationDirectoryPath()
         {
             string executableDirectoryPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
