@@ -55,7 +55,7 @@ namespace GameConsoleSimulator.Test.Tests
 			npc.Position         = (4, 4);
 			npc.MovementDistance = (-2, +6);
 			
-			npc.RotateMovementDirection(+60);
+			npc.ChangeTrajectory(+60);
 			
 			Assert.AreEqual(-6.20, npc.MovementDistance.X, 0.1);
 			Assert.AreEqual(1.27, npc.MovementDistance.Y, 0.1);

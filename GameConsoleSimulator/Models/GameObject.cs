@@ -96,7 +96,7 @@ namespace GameConsoleSimulator.Models
 		/// by rotating it the number of degrees given by the parameter change
 		/// </summary>
 		/// <param name="change">How much to rotate MovementDirection, in degrees</param>
-		public void RotateMovementDirection(Angle change)
+		public void ChangeTrajectory(Angle change)
 		{
 			//TODO: Implement
 			//Hint: you might want to take a look at this webpage: https://matthew-brett.github.io/teaching/rotation_2d.html

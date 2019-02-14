@@ -1,4 +1,6 @@
+using Chess.Utility;
 using GameConsoleSimulator.Utility;
+using NodaTime;
 using SFML.Graphics;
 
 using static GameConsoleSimulator.Config.Configuration;
@@ -31,7 +33,27 @@ namespace GameConsoleSimulator.Models.Games
 
 		public override void Play()
 		{
-			this.Console.DrawToMainDisplay(Normandy, 25000);
+			bool headingAdjusted = false;
+			bool dimmed = false;
+			bool brightened = false;
+			bool madeInvisible = false;
+			
+			var timer = new CountdownTimer();
+			timer.Start(Duration.FromSeconds(30));
+			
+			while (timer.Complete != true)
+			{
+				Normandy.Move();
+
+				if ((timer.TimeElapsed >= Duration.FromSeconds(15)) && (headingAdjusted == false))
+				{
+					Normandy.ChangeTrajectory(30);
+					headingAdjusted = true;
+				}
+				
+				
+				Console.DrawToMainDisplay(Normandy, 1);
+			}
 		}
 
 		private void resizeGameObjects()
