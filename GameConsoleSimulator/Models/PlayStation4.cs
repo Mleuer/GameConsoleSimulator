@@ -1,12 +1,11 @@
 using System;
-using System.IO;
-using System.Net.Mime;
 using System.Threading;
 using SFML.Audio;
 using SFML.Graphics;
 using SFML.Window;
 
 using GameConsoleSimulator.Util;
+using GameConsoleSimulator.Utility;
 using static GameConsoleSimulator.Config.Configuration;
 using static GameConsoleSimulator.Util.Util;
 
@@ -26,8 +25,8 @@ namespace GameConsoleSimulator.Models
         
         public PlayStation4()
         {
-            DefaultVideoResolution = new Size(width: 1280, height: 720);
-            var mode = new VideoMode(DefaultVideoResolution.Width, DefaultVideoResolution.Height);
+            VideoResolution = new Size(width: 1280, height: 720);
+            var mode = new VideoMode(VideoResolution.Width, VideoResolution.Height);
             Window = new RenderWindow(mode, "PS4");
             Running = true;
         }
@@ -51,6 +50,7 @@ namespace GameConsoleSimulator.Models
             
             while (framesShown < framesToDisplayFor)
             {
+                Window.Clear();
                 Window.Draw(drawable);
                 Window.Display();
                 Window.DispatchEvents();
@@ -67,11 +67,13 @@ namespace GameConsoleSimulator.Models
 
         private void ShowStartupScreen()
         {
-            string startupImageFilePath = $"{ImageFileDirectoryPath}{Slash}PlayStationStartupScreen.png";
-            var texture = new Texture(startupImageFilePath);
-            var sprite = new Sprite(texture);
+            string startupImageFilePath = $"{ImageFileDirectoryPath}{Slash}PlayStationSymbols.png";
+            var startupScreenTexture = new Texture(startupImageFilePath);
+            var startupScreen = new GameObject(startupScreenTexture);
+            startupScreen.CenterOrigin();
+            startupScreen.Position = ((Vec2<uint>) VideoResolution) / 2;
             
-            DrawToMainDisplay(sprite, 1000 );
+            DrawToMainDisplay(startupScreen, 400 );
         }
 
         private void PlayStartupTone()

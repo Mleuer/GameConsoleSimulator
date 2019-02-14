@@ -6,7 +6,7 @@ namespace GameConsoleSimulator.Models
     {
         public String Title { get; set; }
 
-        public GameConsole Console { get; set; } = null;
+        public virtual GameConsole Console { get; set; } = null;
 
         public virtual void Play()
         {

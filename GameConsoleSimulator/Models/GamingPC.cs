@@ -8,7 +8,7 @@ namespace GameConsoleSimulator.Models
     {
         public GamingPC()
         {
-            DefaultVideoResolution = new Size(width: 320, height: 240);
+            VideoResolution = new Size(width: 320, height: 240);
         }
 
         public override AVInterface VideoConnectorType

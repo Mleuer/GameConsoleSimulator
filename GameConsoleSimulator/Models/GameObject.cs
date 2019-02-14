@@ -2,7 +2,7 @@ using GameConsoleSimulator.Util;
 using SFML.Graphics;
 using GameConsoleSimulator.Utility;
 
-using Position = GameConsoleSimulator.Utility.Vec2<short>;
+using Position = GameConsoleSimulator.Utility.Vec2<uint>;
 using Direction = GameConsoleSimulator.Utility.NormalizedVec2<float>;
 
 namespace GameConsoleSimulator.Models
@@ -109,6 +109,11 @@ namespace GameConsoleSimulator.Models
 		public void AdjustBrightness(short change)
 		{
 			//TODO: Implement
+		}
+
+		public void CenterOrigin()
+		{
+			Sprite.Origin = ((Vec2<uint>) Texture.Size) / 2;
 		}
 	}
 }

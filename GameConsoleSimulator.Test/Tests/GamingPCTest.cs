@@ -10,8 +10,8 @@ namespace GameConsoleSimulator.Test.Tests
         {
             GameConsole gamingPC = new GamingPC();
 
-            Assert.AreEqual(expected: 3840, actual: gamingPC.DefaultVideoResolution.Width);
-            Assert.AreEqual(expected: 2160, actual: gamingPC.DefaultVideoResolution.Height);
+            Assert.AreEqual(expected: 3840, actual: gamingPC.VideoResolution.Width);
+            Assert.AreEqual(expected: 2160, actual: gamingPC.VideoResolution.Height);
         }
         
         [Test]

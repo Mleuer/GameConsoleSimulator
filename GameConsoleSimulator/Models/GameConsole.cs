@@ -7,7 +7,7 @@ namespace GameConsoleSimulator.Models
 {
     public abstract class GameConsole
     {
-        public Size DefaultVideoResolution;
+        public Size VideoResolution;
         protected RenderWindow Window;
         public abstract AVInterface VideoConnectorType { get; }
         public List<User> Users = new List<User>();
@@ -114,11 +114,6 @@ namespace GameConsoleSimulator.Models
             this.CurrentGame = null;
         }
         public abstract void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor);
-        
-        public void DrawToMainDisplay(GameObject gameObject, ulong framesToDisplayFor)
-        {
-            DrawToMainDisplay(gameObject.Sprite, framesToDisplayFor);
-        }
         
         /// <summary>
         /// Shows a welcome splash screen
