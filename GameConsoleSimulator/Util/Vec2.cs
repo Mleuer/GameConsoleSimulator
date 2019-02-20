@@ -36,7 +36,7 @@ namespace GameConsoleSimulator.Utility
             this.X = x;
             this.Y = y;
         }
-        
+
         public static implicit operator Vec2<N> ((N, N) pair)
         {
             return new Vec2<N> {X = pair.Item1, Y = pair.Item2};

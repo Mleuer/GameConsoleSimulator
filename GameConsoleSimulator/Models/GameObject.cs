@@ -1,3 +1,4 @@
+using System;
 using GameConsoleSimulator.Util;
 using SFML.Graphics;
 using GameConsoleSimulator.Utility;
@@ -24,18 +25,26 @@ namespace GameConsoleSimulator.Models
 			{
 				if (this.Color.A == 0x00)
 				{
-					return true;
+					return false;
 				}
 				else
 				{
-					return false;
+					return true;
 				}
 			}
 			set
 			{
 				if (value == true)
 				{
-					//TODO: we need to change the alpha value of our Color so it's transparent
+					Color color = new Color(this.Color);
+					color.A = 0xFF;
+					this.Color = color;
+				}
+				else
+				{
+					Color color = new Color(this.Color);
+					color.A = 0x00;
+					this.Color = color;
 				}
 			}
 		}
@@ -88,7 +97,12 @@ namespace GameConsoleSimulator.Models
 		/// </summary>
 		public void Move(Vec2<short> distance)
 		{
-			//TODO: implement
+
+			Position newPosition = new Position(x: 0, y: 0);
+			newPosition.X = (uint)(this.Position.X + distance.X);
+			newPosition.Y = (uint)(this.Position.Y + distance.Y);
+			Position = newPosition;
+
 		}
 		
 		/// <summary>
@@ -108,7 +122,43 @@ namespace GameConsoleSimulator.Models
 		/// <param name="change"></param>
 		public void AdjustBrightness(short change)
 		{
-			//TODO: Implement
+			Color color = new Color(this.Color);
+//			color.B	= (byte)(color.B + change);
+//			color.G = (byte)(color.G + change);
+//			color.R = (byte)(color.R + change);
+			int b = color.B + change;
+			int g = color.G + change;
+			int r = color.R + change;
+
+			if (b > 255)
+			{
+				Math.DivRem(b, 255, out b);
+			}
+			if (g > 255)
+			{
+				Math.DivRem(g, 255, out g);
+			}
+			if (r > 255)
+			{
+				Math.DivRem(r, 255, out r);
+			}
+			if (r < 0)
+			{
+				r = 0;
+			}
+			if (g < 0)
+			{
+				g = 0;
+			}
+			if (b < 0)
+			{
+				b = 0;
+			}
+
+			color.B = (byte)b;
+			color.G = (byte)g;
+			color.R = (byte)r;
+			this.Color = color;
 		}
 
 		public void CenterOrigin()

@@ -44,11 +44,12 @@ namespace GameConsoleSimulator.Test.Tests
 			
 			npc.Move();
 			
-			Assert.AreEqual(new Position(56, 40), npc.Position);
+			Assert.AreEqual(56, npc.Position.X);
+			Assert.AreEqual(expected: 40, npc.Position.Y);
 		}
 
 		[Test]
-		public static void AdjustMovementDirectionShouldRotateTheMovementDistanceVectorByTheGivenAngle()
+		public static void ChangeTrajectoryShouldRotateTheMovementDistanceVectorByTheGivenAngle()
 		{
 			var npc = new GameObject();
 			npc.Texture          = new Texture(3000, 2500);
