@@ -16,7 +16,7 @@ namespace GameConsoleSimulator.Config
  
         public const uint DefaultTextCharacterSize = 60;
 
-        public static readonly TimeSpan RefreshTime = TimeSpan.FromMilliseconds(8);
+        public static readonly TimeSpan RefreshInterval = TimeSpan.FromMilliseconds(8);
 
         public static readonly String AssetFileDirectoryPath = GetApplicationDirectoryPath() + $"{Slash}Assets";
         public static readonly String ImageFileDirectoryPath = $"{AssetFileDirectoryPath}{Slash}Bitmaps";

@@ -44,7 +44,7 @@ namespace GameConsoleSimulator.Models
         /// For example, if the program refreshes 30 times per second, and DrawToMainDisplay()
         /// is requested to draw a Sprite for 30 frames, the sprite will remain on screen for
         /// 1 second.
-        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Drawable drawable, TimeSpan refreshInterval, ulong framesToDisplayFor)
         {
             ulong framesShown = 0;
             
@@ -54,7 +54,7 @@ namespace GameConsoleSimulator.Models
                 Window.Draw(drawable);
                 Window.Display();
                 Window.DispatchEvents();
-                Thread.Sleep(RefreshTime);
+                Thread.Sleep(refreshInterval);
                 framesShown++;
             }
         }
@@ -73,7 +73,7 @@ namespace GameConsoleSimulator.Models
             startupScreen.CenterOrigin();
             startupScreen.Position = ((Vec2<uint>) VideoResolution) / 2;
             
-            DrawToMainDisplay(startupScreen, 400 );
+            DrawToMainDisplay(startupScreen,400 );
         }
 
         private void PlayStartupTone()

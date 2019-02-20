@@ -1,3 +1,4 @@
+using System;
 using SFML.Graphics;
 
 namespace GameConsoleSimulator.Models
@@ -12,7 +13,7 @@ namespace GameConsoleSimulator.Models
             }
         }
 
-        public override void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval, ulong framesToDisplayFor)
         {
             throw new System.NotImplementedException();
         }

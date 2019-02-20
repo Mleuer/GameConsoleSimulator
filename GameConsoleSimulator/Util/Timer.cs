@@ -24,7 +24,7 @@ namespace Chess.Utility
         
         public bool Started { get; private set; } = false;
 
-        public void Start()
+        public virtual void Start()
         {
             Reset();
             Started = true;
@@ -51,7 +51,12 @@ namespace Chess.Utility
         {
             get { return (TimeElapsed >= Duration); }
         }
-        
+
+        public override void Start()
+        {
+            Start(Duration);
+        }
+
         public void Start(Duration duration)
         {
             this.Duration = duration;

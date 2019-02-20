@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using SFML.Graphics;
 using GameConsoleSimulator.Util;
 
+using static GameConsoleSimulator.Config.Configuration;
+
 namespace GameConsoleSimulator.Models
 {
     public abstract class GameConsole
@@ -113,7 +115,12 @@ namespace GameConsoleSimulator.Models
         {
             this.CurrentGame = null;
         }
-        public abstract void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor);
+
+        public void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
+        {
+            DrawToMainDisplay(drawable, RefreshInterval, framesToDisplayFor);
+        }
+        public abstract void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval, ulong framesToDisplayFor);
         
         /// <summary>
         /// Shows a welcome splash screen

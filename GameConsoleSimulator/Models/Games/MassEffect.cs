@@ -1,3 +1,4 @@
+using System;
 using Chess.Utility;
 using GameConsoleSimulator.Utility;
 using NodaTime;
@@ -29,7 +30,7 @@ namespace GameConsoleSimulator.Models.Games
 			var normandyTexture = new Texture(ImageFileDirectoryPath + Slash + "Normandy.png");
 			Normandy = new GameObject(normandyTexture);
 			Normandy.CenterOrigin();
-			Normandy.MovementDistance = (4, 1);
+			Normandy.MovementDistance = (1, 0);
 		}
 
 		public override void Play()
@@ -38,22 +39,46 @@ namespace GameConsoleSimulator.Models.Games
 			bool dimmed = false;
 			bool brightened = false;
 			bool madeInvisible = false;
+			bool madeVisibleAgain = false;
 			
 			var timer = new CountdownTimer();
 			timer.Start(Duration.FromSeconds(30));
 			
-			while (timer.Complete != true)
+			while (timer.Complete == false)
 			{
 				Normandy.Move();
+				Console.DrawToMainDisplay(Normandy, TimeSpan.FromMilliseconds(32), 1);
+				
 
-				if ((timer.TimeElapsed >= Duration.FromSeconds(15)) && (headingAdjusted == false))
+				if ((timer.TimeElapsed >= Duration.FromSeconds(2.5)) && (headingAdjusted == false))
 				{
 					Normandy.ChangeTrajectory(30);
 					headingAdjusted = true;
 				}
 				
+				if ((timer.TimeElapsed >= Duration.FromSeconds(5)) && (dimmed == false))
+				{
+					Normandy.AdjustBrightness(-75);
+					dimmed = true;
+				}
 				
-				Console.DrawToMainDisplay(Normandy, 1);
+				if ((timer.TimeElapsed >= Duration.FromSeconds(6.5)) && (brightened == false))
+				{
+					Normandy.AdjustBrightness(+200);
+					brightened = true;
+				}
+				
+				if ((timer.TimeElapsed >= Duration.FromSeconds(9)) && (madeInvisible == false))
+				{
+					Normandy.Visible = false;
+					madeInvisible = true;
+				}
+				
+				if ((timer.TimeElapsed >= Duration.FromSeconds(11.5)) && madeInvisible && (madeVisibleAgain == false))
+				{
+					Normandy.Visible = true;
+					madeVisibleAgain = true;
+				}
 			}
 		}
 
