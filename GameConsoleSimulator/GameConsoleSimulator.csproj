@@ -132,6 +132,7 @@
     <Content Include="Libraries\csfml-network-2.dll" />
     <Content Include="Libraries\csfml-system-2.dll" />
     <Content Include="Libraries\csfml-window-2.dll" />
+    <Content Include="Libraries\openal32.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
@@ -144,6 +145,7 @@
     <Copy SourceFiles="Libraries\csfml-network-2.dll" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="Libraries\csfml-system-2.dll" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="Libraries\csfml-window-2.dll" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="Libraries\openal32.dll" DestinationFolder="$(OutDir)" />
     <!--add other dynamic libraries here if needed-->
   </Target>
   <Target Name="CopyCustomDynamicLibraryConfigs" Condition=" '$(OS)' == 'Unix' " AfterTargets="AfterBuild">
