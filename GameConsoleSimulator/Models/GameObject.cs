@@ -51,7 +51,7 @@ namespace GameConsoleSimulator.Models
 		/// <summary>
 		/// How far this GameObject should move each time Move() is called, in (±x, ±y) pixels
 		/// </summary>
-		public Vec2<short> MovementDistance { get; set; } = (4, 4);
+		public Vec2<short> MovementDistance { get; set; } = (0, 0);
 		
 		/// <summary>
 		/// The current position of this GameObject in the world

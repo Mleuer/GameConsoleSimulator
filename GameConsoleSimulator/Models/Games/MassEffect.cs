@@ -29,6 +29,7 @@ namespace GameConsoleSimulator.Models.Games
 			var normandyTexture = new Texture(ImageFileDirectoryPath + Slash + "Normandy.png");
 			Normandy = new GameObject(normandyTexture);
 			Normandy.CenterOrigin();
+			Normandy.MovementDistance = (4, 1);
 		}
 
 		public override void Play()
