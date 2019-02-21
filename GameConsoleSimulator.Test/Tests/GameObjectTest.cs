@@ -61,6 +61,19 @@ namespace GameConsoleSimulator.Test.Tests
 			Assert.AreEqual(-6.20, npc.MovementDistance.X, 0.1);
 			Assert.AreEqual(1.27, npc.MovementDistance.Y, 0.1);
 		}
+
+		[Test]
+		public static void ChangeSpeedShouldAlterSpeed()
+		{
+			var npc = new GameObject();
+			npc.Texture          = new Texture(3000, 2500);
+			npc.MovementDistance = (4, 0);
+			
+			npc.ChangeSpeed(30);
+			
+			Assert.AreEqual(120, npc.MovementDistance.X);
+			Assert.AreEqual(0, npc.MovementDistance.Y);
+		}
 		
 		
 	}

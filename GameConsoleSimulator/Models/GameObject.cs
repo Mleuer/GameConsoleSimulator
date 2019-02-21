@@ -2,9 +2,10 @@ using System;
 using GameConsoleSimulator.Util;
 using SFML.Graphics;
 using GameConsoleSimulator.Utility;
-
+using MonoMac.AppKit;
 using Position = GameConsoleSimulator.Utility.Vec2<uint>;
 using Direction = GameConsoleSimulator.Utility.NormalizedVec2<float>;
+using static System.Math;
 
 namespace GameConsoleSimulator.Models
 {
@@ -112,8 +113,21 @@ namespace GameConsoleSimulator.Models
 		/// <param name="change">How much to rotate MovementDirection, in degrees</param>
 		public void ChangeTrajectory(Angle change)
 		{
-			//TODO: Implement
 			//Hint: you might want to take a look at this webpage: https://matthew-brett.github.io/teaching/rotation_2d.html
+			
+//			x2=cosβx1−sinβy1
+//			y2=sinβx1+cosβy
+
+			this.MovementDistance.X = (short)(Math.Cos(change) - Math.Sin(change));
+			this.MovementDistance.Y = (short)(Math.Sin(change) + Math.Cos(change));
+		}
+
+		public void ChangeSpeed(float multiplier)
+		{
+			float xVelocity = this.MovementDistance.X * multiplier;
+			float yVelocity = this.MovementDistance.Y * multiplier;
+			this.MovementDistance.X = (short)xVelocity;
+			this.MovementDistance.Y = (short)yVelocity;
 		}
 		
 		/// <summary>
@@ -123,9 +137,6 @@ namespace GameConsoleSimulator.Models
 		public void AdjustBrightness(short change)
 		{
 			Color color = new Color(this.Color);
-//			color.B	= (byte)(color.B + change);
-//			color.G = (byte)(color.G + change);
-//			color.R = (byte)(color.R + change);
 			int b = color.B + change;
 			int g = color.G + change;
 			int r = color.R + change;

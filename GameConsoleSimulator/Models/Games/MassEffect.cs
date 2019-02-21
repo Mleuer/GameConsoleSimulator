@@ -40,6 +40,7 @@ namespace GameConsoleSimulator.Models.Games
 			bool brightened = false;
 			bool madeInvisible = false;
 			bool madeVisibleAgain = false;
+			bool spedUp = false;
 			
 			var timer = new CountdownTimer();
 			timer.Start(Duration.FromSeconds(30));
@@ -79,6 +80,12 @@ namespace GameConsoleSimulator.Models.Games
 					Normandy.Visible = true;
 					madeVisibleAgain = true;
 				}
+				if ((timer.TimeElapsed >= Duration.FromSeconds(0)) )
+				{
+					Normandy.ChangeSpeed(1.8f);
+					spedUp = true;
+				}
+				
 			}
 		}
 
