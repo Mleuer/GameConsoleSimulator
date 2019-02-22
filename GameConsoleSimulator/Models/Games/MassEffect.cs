@@ -32,7 +32,32 @@ namespace GameConsoleSimulator.Models.Games
 			Normandy.CenterOrigin();
 			Normandy.MovementDistance = (1, 0);
 		}
-
+		
+		public void ProcessKeyboardInput()
+		{
+			if (SFML.Window.Keyboard.IsKeyPressed (SFML.Window.Keyboard.Key.W))
+			{
+				// left key is pressed: move our character
+				Normandy.Move(new Vec2<float>(0f, -4f));
+			}
+			if (SFML.Window.Keyboard.IsKeyPressed (SFML.Window.Keyboard.Key.A))
+			{
+				// left key is pressed: move our character
+				Normandy.Move(new Vec2<float>(-4f, 0f));
+			}
+			if (SFML.Window.Keyboard.IsKeyPressed (SFML.Window.Keyboard.Key.S))
+			{
+				// left key is pressed: move our character
+				Normandy.Move(new Vec2<float>(0f, 4f));
+			}
+			if (SFML.Window.Keyboard.IsKeyPressed (SFML.Window.Keyboard.Key.D))
+			{
+				// left key is pressed: move our character
+				Normandy.Move(new Vec2<float>(4f, 0f));
+			}
+			
+		}
+		
 		public override void Play()
 		{
 			bool headingAdjusted = false;
@@ -47,7 +72,7 @@ namespace GameConsoleSimulator.Models.Games
 			
 			while (timer.Complete == false)
 			{
-				Normandy.Move();
+				this.ProcessKeyboardInput();
 				Console.DrawToMainDisplay(Normandy, TimeSpan.FromMilliseconds(32), 1);
 				
 
@@ -80,11 +105,11 @@ namespace GameConsoleSimulator.Models.Games
 					Normandy.Visible = true;
 					madeVisibleAgain = true;
 				}
-				if ((timer.TimeElapsed >= Duration.FromSeconds(0)) )
-				{
-					Normandy.ChangeSpeed(1.8f);
-					spedUp = true;
-				}
+//				if ((timer.TimeElapsed >= Duration.FromSeconds(0)) )
+//				{
+//					Normandy.ChangeSpeed(1.8f);
+//					spedUp = true;
+//				}
 				
 			}
 		}

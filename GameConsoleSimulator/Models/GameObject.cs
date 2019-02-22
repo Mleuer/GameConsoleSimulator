@@ -3,7 +3,7 @@ using GameConsoleSimulator.Util;
 using SFML.Graphics;
 using GameConsoleSimulator.Utility;
 using MonoMac.AppKit;
-using Position = GameConsoleSimulator.Utility.Vec2<uint>;
+using Position = GameConsoleSimulator.Utility.Vec2<float>;
 using Direction = GameConsoleSimulator.Utility.NormalizedVec2<float>;
 using static System.Math;
 
@@ -52,7 +52,7 @@ namespace GameConsoleSimulator.Models
 		/// <summary>
 		/// How far this GameObject should move each time Move() is called, in (±x, ±y) pixels
 		/// </summary>
-		public Vec2<short> MovementDistance { get; set; } = (0, 0);
+		public Vec2<float> MovementDistance { get; set; } = (0, 0);
 		
 		/// <summary>
 		/// The current position of this GameObject in the world
@@ -96,12 +96,12 @@ namespace GameConsoleSimulator.Models
 		/// <summary>
 		/// Moves this GameObject by the number of pixels given by the argument distance
 		/// </summary>
-		public void Move(Vec2<short> distance)
+		public void Move(Vec2<float> distance)
 		{
 
 			Position newPosition = new Position(x: 0, y: 0);
-			newPosition.X = (uint)(this.Position.X + distance.X);
-			newPosition.Y = (uint)(this.Position.Y + distance.Y);
+			newPosition.X = (this.Position.X + distance.X);
+			newPosition.Y = (this.Position.Y + distance.Y);
 			Position = newPosition;
 
 		}
@@ -113,13 +113,7 @@ namespace GameConsoleSimulator.Models
 		/// <param name="change">How much to rotate MovementDirection, in degrees</param>
 		public void ChangeTrajectory(Angle change)
 		{
-			//Hint: you might want to take a look at this webpage: https://matthew-brett.github.io/teaching/rotation_2d.html
-			
-//			x2=cosβx1−sinβy1
-//			y2=sinβx1+cosβy
-
-			this.MovementDistance.X = (short)(Math.Cos(change) - Math.Sin(change));
-			this.MovementDistance.Y = (short)(Math.Sin(change) + Math.Cos(change));
+			this.MovementDistance.Rotate(change);
 		}
 
 		public void ChangeSpeed(float multiplier)

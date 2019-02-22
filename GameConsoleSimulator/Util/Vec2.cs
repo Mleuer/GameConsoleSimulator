@@ -1,4 +1,5 @@
 ﻿using System;
+using GameConsoleSimulator.Util;
 using SFML.System;
 
 namespace System
@@ -23,7 +24,7 @@ namespace GameConsoleSimulator.Utility
         public N X { get; set; }
         public N Y { get; set; }
         
-        protected Vec2() {}
+        public Vec2() {}
         
         public Vec2(Vec2<N> other) :
             this(other.X, other.Y)
@@ -225,6 +226,15 @@ namespace GameConsoleSimulator.Utility
             Vec2<double> p1 = point1.ConvertMemberType<double>();
 
             return distance(p0, p1);
+        }
+        public void Rotate(Angle change)
+        {
+            change = change.GetValueInUnitType(AngleUnitType.Radians);
+            var oldX = this.X;
+            var oldY = this.Y;
+			
+            this.X = (N)((Math.Cos(change) * (dynamic)oldX) - (Math.Sin(change) * (dynamic)oldY));
+            this.Y = (N)((Math.Sin(change) * (dynamic)oldX) + (Math.Cos(change) * (dynamic)oldY));       
         }
 
         public static double Distance<M>(Vec2<N> point0, Vec2<M> point1) where M : 
