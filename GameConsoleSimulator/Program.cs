@@ -17,8 +17,6 @@ namespace GameConsoleSimulator
             ps4.InstallGame(massEffect);
             
             ps4.Play(massEffect);
-            
-            Thread.Sleep(TimeSpan.FromSeconds(20));
         }
     } 
     

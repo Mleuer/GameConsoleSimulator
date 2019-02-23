@@ -118,9 +118,9 @@ namespace GameConsoleSimulator.Models
 
         public void DrawToMainDisplay(Drawable drawable, ulong framesToDisplayFor)
         {
-            DrawToMainDisplay(drawable, RefreshInterval, framesToDisplayFor);
+            DrawToMainDisplay(drawable, RefreshInterval);
         }
-        public abstract void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval, ulong framesToDisplayFor);
+        public abstract void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval);
         
         /// <summary>
         /// Shows a welcome splash screen

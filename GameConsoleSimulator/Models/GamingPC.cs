@@ -20,7 +20,7 @@ namespace GameConsoleSimulator.Models
             }
         }
 
-        public override void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval, ulong framesToDisplayFor)
+        public override void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval)
         {
             throw new NotImplementedException();
         }

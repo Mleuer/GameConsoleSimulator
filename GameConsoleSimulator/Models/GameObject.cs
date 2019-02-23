@@ -2,7 +2,6 @@ using System;
 using GameConsoleSimulator.Util;
 using SFML.Graphics;
 using GameConsoleSimulator.Utility;
-using MonoMac.AppKit;
 using Position = GameConsoleSimulator.Utility.Vec2<float>;
 using Direction = GameConsoleSimulator.Utility.NormalizedVec2<float>;
 using static System.Math;
@@ -20,7 +19,7 @@ namespace GameConsoleSimulator.Models
 		/// When true, the GameObject is at least somewhat translucent. When false, it is fully transparent.
 		/// </summary>
 		/// <returns>true if the GameObject should be visible, false otherwise</returns>
-		public bool Visible
+		public bool Visible 
 		{
 			get
 			{
@@ -49,6 +48,7 @@ namespace GameConsoleSimulator.Models
 				}
 			}
 		}
+		
 		/// <summary>
 		/// How far this GameObject should move each time Move() is called, in (±x, ±y) pixels
 		/// </summary>
@@ -98,12 +98,10 @@ namespace GameConsoleSimulator.Models
 		/// </summary>
 		public void Move(Vec2<float> distance)
 		{
-
-			Position newPosition = new Position(x: 0, y: 0);
+			var newPosition = new Position(x: 0, y: 0);
 			newPosition.X = (this.Position.X + distance.X);
 			newPosition.Y = (this.Position.Y + distance.Y);
 			Position = newPosition;
-
 		}
 		
 		/// <summary>
