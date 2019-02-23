@@ -63,6 +63,11 @@ namespace GameConsoleSimulator.Models
 			set { Sprite.Position = value; }
 		}
 
+		public FloatRect BoundingRectangle
+		{
+			get { return Sprite.GetGlobalBounds(); }
+		}
+
 		public Sprite Sprite { get; private set; }
 		
 		public Texture Texture 
@@ -167,6 +172,29 @@ namespace GameConsoleSimulator.Models
 		public void CenterOrigin()
 		{
 			Sprite.Origin = ((Vec2<uint>) Texture.Size) / 2;
+		}
+		
+		/// <summary>
+		/// Checks if the BoundingRectangles of one and two overlap. If they do, it returns true.
+		/// Otherwise returns false.
+		/// </summary>
+		/// <param name="one"></param>
+		/// <param name="two"></param>
+		/// <returns></returns>
+		public static bool CheckForCollision(GameObject one, GameObject two)
+		{
+			/* Hint: in order to detect if a collision has occured, you'll need to check if the two GameObject's BoundingRectangle
+			 properties overlap each other. To find out how to do that, you'll need to research algorithms for detecting if two
+			 rectangles overlap based on the vector coordinates of each of their four corners*/
+			
+			/* Hint 1.5: FloatRect won't give you all four corners directly, but you can figure them out pretty easily. The 'Top' and 'Left' properties of a FloatRect (the type that BoundingRectangle is) together make up the top-left
+			 corner coordinate of the rectangle (The 'Left' is the X, the 'Top' is the Y). Using that information together with its Height and Width should allow you to determine the coordinates of all
+			 four coordinates of the FloatRect*/
+			
+			/* Hint 2: if you're really stuck, have a look here: https://gamedev.stackexchange.com/questions/29786/a-simple-2d-rectangle-collision-algorithm-that-also-determines-which-sides-that?rq=1 */
+			
+			/* Hint 3: If you're really, really stuck: have a look around the FloatRect class. Maybe someone already did the work for you...*/
+			throw new NotImplementedException();
 		}
 	}
 }

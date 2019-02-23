@@ -75,6 +75,34 @@ namespace GameConsoleSimulator.Test.Tests
 			Assert.AreEqual(0, npc.MovementDistance.Y);
 		}
 		
+		[Test]
+		public static void ShouldReturnFalseWhenThereIsNoCollision()
+		{
+			var ship0 = new GameObject();
+			var ship1 = new GameObject();
+			ship0.Texture = new Texture(8, 8); //a GameObject gets its size from its texture
+			ship1.Texture = new Texture(6, 6);
+			ship0.Position = (4, 4);
+			ship1.Position = (50, 50);
+
+			bool collisionDetected = GameObject.CheckForCollision(ship0, ship1);
+			
+			Assert.False(collisionDetected);
+		}
 		
+		[Test]
+		public static void ShouldReturnTrueWhenTwoGameObjectsAreColliding()
+		{
+			var ship = new GameObject();
+			var missile = new GameObject();
+			ship.Texture = new Texture(8, 8);
+			missile.Texture = new Texture(8, 8);
+			ship.Position = (4, 4);
+			missile.Position = (6, 6);
+
+			bool collisionDetected = GameObject.CheckForCollision(ship, missile);
+			
+			Assert.True(collisionDetected);
+		}
 	}
 }
