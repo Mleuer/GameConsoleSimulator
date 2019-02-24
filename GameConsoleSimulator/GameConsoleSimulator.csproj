@@ -95,6 +95,7 @@
     <Compile Include="Models\Games\MassEffect.cs" />
     <Compile Include="Models\GamingPC.cs" />
     <Compile Include="Models\GenericGameConsole.cs" />
+    <Compile Include="Models\Normandy.cs" />
     <Compile Include="Models\PlayStation4.cs" />
     <Compile Include="Models\PS4Pro.cs" />
     <Compile Include="Models\User.cs" />

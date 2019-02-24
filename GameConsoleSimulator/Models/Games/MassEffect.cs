@@ -22,13 +22,12 @@ namespace GameConsoleSimulator.Models.Games
 			
 		}
 
-		public GameObject Normandy { get; private set; }
+		public Normandy Normandy { get; private set; }
 		
 		public MassEffect() 
 		{
 			Title = "Mass Effect";
-			var normandyTexture = new Texture(ImageFileDirectoryPath + Slash + "Normandy.png");
-			Normandy = new GameObject(normandyTexture);
+			Normandy = new Normandy();
 			Normandy.CenterOrigin();
 			Normandy.MovementDistance = (1, 0);
 		}
