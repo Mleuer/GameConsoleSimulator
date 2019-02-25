@@ -17,7 +17,11 @@ namespace GameConsoleSimulator.Models
         {
             throw new System.NotImplementedException();
         }
-
+            
+        public override void DrawToMainDisplay(TimeSpan refreshInterval, params Drawable[] drawables)
+        {
+            throw new NotImplementedException();
+        }
         public override void RunStartupRoutine()
         {
             throw new System.NotImplementedException();

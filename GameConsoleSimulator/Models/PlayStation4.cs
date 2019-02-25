@@ -52,6 +52,18 @@ namespace GameConsoleSimulator.Models
             Window.DispatchEvents();
             Thread.Sleep(refreshInterval);
         }
+        public override void DrawToMainDisplay(TimeSpan refreshInterval, params Drawable[] drawables)
+        {
+            Window.Clear();
+            
+            foreach (var drawable in drawables)
+            {
+                Window.Draw(drawable);
+            }
+            Window.Display();
+            Window.DispatchEvents();
+            Thread.Sleep(refreshInterval);
+        }
 
         public override void RunStartupRoutine()
         {

@@ -121,6 +121,7 @@ namespace GameConsoleSimulator.Models
             DrawToMainDisplay(drawable, RefreshInterval);
         }
         public abstract void DrawToMainDisplay(Drawable drawable, TimeSpan RefreshInterval);
+        public abstract void DrawToMainDisplay(TimeSpan refreshInterval, params Drawable[] drawables);
         
         /// <summary>
         /// Shows a welcome splash screen

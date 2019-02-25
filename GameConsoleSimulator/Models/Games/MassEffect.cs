@@ -3,7 +3,7 @@ using Chess.Utility;
 using GameConsoleSimulator.Utility;
 using NodaTime;
 using SFML.Graphics;
-
+using SFML.Window;
 using static GameConsoleSimulator.Config.Configuration;
 using static GameConsoleSimulator.Util.Util;
 
@@ -23,7 +23,7 @@ namespace GameConsoleSimulator.Models.Games
 		}
 
 		public Normandy Normandy { get; private set; }
-		
+
 		public MassEffect() 
 		{
 			Title = "Mass Effect";
@@ -54,7 +54,15 @@ namespace GameConsoleSimulator.Models.Games
 				// left key is pressed: move our character
 				Normandy.Move(new Vec2<float>(1f, 0f));
 			}
-			
+			if (SFML.Window.Mouse.IsButtonPressed(Mouse.Button.Left))
+			{
+				// left key is pressed: move our character
+				Normandy.FireThanixCannon();
+			}
+			else
+			{
+				Normandy.StowThanixCannon();
+			}
 		}
 		
 		public override void Play()
@@ -65,7 +73,7 @@ namespace GameConsoleSimulator.Models.Games
 			while (timer.Complete == false)
 			{
 				ProcessKeyboardInput();
-				Console.DrawToMainDisplay(Normandy, TimeSpan.FromMilliseconds(8));
+				Console.DrawToMainDisplay(TimeSpan.FromMilliseconds(8), Normandy, Normandy.ThanixCannon);
 			}
 		}
 
