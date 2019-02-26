@@ -11,7 +11,7 @@ namespace GameConsoleSimulator.Models
     {
         public Size VideoResolution;
         protected RenderWindow Window;
-        public abstract AVInterface VideoConnectorType { get; }
+        public abstract AVInterface VideoConnectorType { get;}
         public List<User> Users = new List<User>();
         public User CurrentUser { get; private set; } = null;
         public SortedSet<Game> InstalledGames = new SortedSet<Game>();

@@ -25,7 +25,7 @@ namespace GameConsoleSimulator.Models
         
         public PlayStation4()
         {
-            VideoResolution = new Size(width: 1280, height: 720);
+            VideoResolution = new Size(width: 1920, height: 1080);
             var mode = new VideoMode(VideoResolution.Width, VideoResolution.Height);
             Window = new RenderWindow(mode, "PS4");
             Running = true;
@@ -33,11 +33,7 @@ namespace GameConsoleSimulator.Models
         
         public override AVInterface VideoConnectorType
         {
-            get
-            {
-                //hint: you'll want to replace the line below with a "return <something>;" statement
-                throw new Exception("PS4's get VideoConnectorType isn't implemented yet!");
-            }
+            get { return AVInterface.HDMI; }
         }
 
         /// Draws the Drawable to the display for the number of frames given by framesToDisplayFor.

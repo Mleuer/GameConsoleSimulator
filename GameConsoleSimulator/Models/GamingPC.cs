@@ -8,15 +8,14 @@ namespace GameConsoleSimulator.Models
     {
         public GamingPC()
         {
-            VideoResolution = new Size(width: 320, height: 240);
+            VideoResolution = new Size(width: 3840, height: 2160);
         }
 
         public override AVInterface VideoConnectorType
         {
             get
             {
-                //hint: you'll want to replace the line below with a "return <something>;" statement
-                throw new Exception("GamingPC's get VideoConnectorType isn't implemented yet!");
+                return AVInterface.DisplayPort;
             }
         }
 

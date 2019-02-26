@@ -194,7 +194,46 @@ namespace GameConsoleSimulator.Models
 			/* Hint 2: if you're really stuck, have a look here: https://gamedev.stackexchange.com/questions/29786/a-simple-2d-rectangle-collision-algorithm-that-also-determines-which-sides-that?rq=1 */
 			
 			/* Hint 3: If you're really, really stuck: have a look around the FloatRect class. Maybe someone already did the work for you...*/
-			throw new NotImplementedException();
+			Vec2<float> shapeOneTopLeft = new Position();
+			shapeOneTopLeft.X = one.BoundingRectangle.Left;
+			shapeOneTopLeft.Y = one.BoundingRectangle.Top;
+			
+			Vec2<float> shapeOneTopRight = new Position();
+			shapeOneTopRight.X = one.BoundingRectangle.Left + one.BoundingRectangle.Width;
+			shapeOneTopRight.Y = one.BoundingRectangle.Top;
+			
+			Vec2<float> shapeOneBottomLeft = new Position();
+			shapeOneBottomLeft.X = one.BoundingRectangle.Left;
+			shapeOneBottomLeft.Y = one.BoundingRectangle.Top - one.BoundingRectangle.Height;
+			
+			Vec2<float> shapeOneBottomRight = new Position();
+			shapeOneBottomRight.X = one.BoundingRectangle.Left + one.BoundingRectangle.Width;
+			shapeOneBottomRight.Y = one.BoundingRectangle.Top - one.BoundingRectangle.Height;
+			
+			Vec2<float> shapeTwoTopLeft = new Position();
+			shapeTwoTopLeft.X = two.BoundingRectangle.Left;
+			shapeTwoTopLeft.Y = two.BoundingRectangle.Top;
+			
+			Vec2<float> shapeTwoTopRight = new Position();
+			shapeTwoTopRight.X = two.BoundingRectangle.Left + two.BoundingRectangle.Width;
+			shapeTwoTopRight.Y = two.BoundingRectangle.Top;
+			
+			Vec2<float> shapeTwoBottomLeft = new Position();
+			shapeTwoBottomLeft.X = two.BoundingRectangle.Left;
+			shapeTwoBottomLeft.Y = two.BoundingRectangle.Top - two.BoundingRectangle.Height;
+			
+			Vec2<float> shapeTwoBottomRight = new Position();
+			shapeTwoBottomRight.X = two.BoundingRectangle.Left + two.BoundingRectangle.Width;
+			shapeTwoBottomRight.Y = two.BoundingRectangle.Top - two.BoundingRectangle.Height;
+
+			if (expr)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}
 }
