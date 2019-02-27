@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 using GameConsoleSimulator.Models;
 using SFML.Graphics;
-using Position = GameConsoleSimulator.Utility.Vec2<short>;
+using Position = GameConsoleSimulator.Util.Vec2<short>;
 
 namespace GameConsoleSimulator.Test.Tests
 {

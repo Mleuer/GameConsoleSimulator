@@ -5,7 +5,6 @@ using SFML.Graphics;
 using SFML.Window;
 
 using GameConsoleSimulator.Util;
-using GameConsoleSimulator.Utility;
 using static GameConsoleSimulator.Config.Configuration;
 using static GameConsoleSimulator.Util.Util;
 

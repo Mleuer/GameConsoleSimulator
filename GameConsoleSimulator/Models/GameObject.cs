@@ -1,10 +1,8 @@
 using System;
 using GameConsoleSimulator.Util;
 using SFML.Graphics;
-using GameConsoleSimulator.Utility;
-using Position = GameConsoleSimulator.Utility.Vec2<float>;
-using Direction = GameConsoleSimulator.Utility.NormalizedVec2<float>;
-using static System.Math;
+using Position = GameConsoleSimulator.Util.Vec2<float>;
+using Direction = GameConsoleSimulator.Util.NormalizedVec2<float>;
 
 namespace GameConsoleSimulator.Models
 {

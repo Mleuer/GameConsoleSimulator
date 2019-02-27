@@ -1,4 +1,3 @@
-using GameConsoleSimulator.Utility;
 using SFML.System;
 
 namespace GameConsoleSimulator.Util

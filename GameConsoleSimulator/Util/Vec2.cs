@@ -11,7 +11,7 @@ namespace System
     }
 }
 
-namespace GameConsoleSimulator.Utility
+namespace GameConsoleSimulator.Util
 {
     public class Vec2<N> : IEquatable<Vec2<N>>, IEquatable<(N,N)>, IIndexable<N> where N:
         struct,
@@ -223,18 +223,12 @@ namespace GameConsoleSimulator.Utility
         
         public static HashSet<Vec2<N>> CalculateMinkowskiSum(List<Vec2<N>> shapeOnePoints, List<Vec2<N>> shapeTwoPoints)
         {
-            HashSet<Vec2<N>> minkowskiSum = new HashSet<Vec2<N>>();
+            var minkowskiSum = new HashSet<Vec2<N>>();
             
             foreach (var point1 in shapeOnePoints)
             {
                 foreach (var point2 in shapeTwoPoints)
                 {
-//                    dynamic newPointX = (dynamic)point1.X + (dynamic)point2.X;
-//                    dynamic newPointY = (dynamic)point1.Y + (dynamic)point2.Y;
-//                    
-//                    Vec2<N> newPoint = new Vec2<N>{X = newPointX, Y = newPointY};
-
-
                     Vec2<N> newPoint = point1 + point2;
                         
                     minkowskiSum.Add(newPoint);

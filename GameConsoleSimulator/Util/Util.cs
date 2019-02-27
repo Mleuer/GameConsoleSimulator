@@ -6,9 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using C5;
-using GameConsoleSimulator.Utility;
 using SFML.System;
-using SFML.Graphics;
 
 namespace GameConsoleSimulator.Util
 {

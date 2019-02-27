@@ -1,7 +1,7 @@
 using System;
 using NodaTime;
 
-namespace Chess.Utility
+namespace GameConsoleSimulator.Util
 {
     public class Timer 
     {

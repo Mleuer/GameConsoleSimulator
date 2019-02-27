@@ -1,8 +1,6 @@
 using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
-
-using GameConsoleSimulator.Utility;
 using GameConsoleSimulator.Config;
 using GameConsoleSimulator.Util;
 

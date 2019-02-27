@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using SFML.Graphics;
 using static GameConsoleSimulator.Config.Configuration;
 using static GameConsoleSimulator.Util.Util;

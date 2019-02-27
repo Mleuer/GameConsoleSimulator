@@ -1,11 +1,7 @@
 using System;
-using Chess.Utility;
-using GameConsoleSimulator.Utility;
+using GameConsoleSimulator.Util;
 using NodaTime;
-using SFML.Graphics;
 using SFML.Window;
-using static GameConsoleSimulator.Config.Configuration;
-using static GameConsoleSimulator.Util.Util;
 
 namespace GameConsoleSimulator.Models.Games
 {
