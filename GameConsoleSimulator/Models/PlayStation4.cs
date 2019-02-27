@@ -28,13 +28,9 @@ namespace GameConsoleSimulator.Models
             VideoResolution = new Size(width: 1920, height: 1080);
             var mode = new VideoMode(VideoResolution.Width, VideoResolution.Height);
             Window = new RenderWindow(mode, "PS4");
-            Running = true;
+            Running = true;  
         }
-        
-        public override AVInterface VideoConnectorType
-        {
-            get { return AVInterface.HDMI; }
-        }
+        public override AVInterface VideoConnectorType { get; } = AVInterface.HDMI;
 
         /// Draws the Drawable to the display for the number of frames given by framesToDisplayFor.
         /// For example, if the program refreshes 30 times per second, and DrawToMainDisplay()

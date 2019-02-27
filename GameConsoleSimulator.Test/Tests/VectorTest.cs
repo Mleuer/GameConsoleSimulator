@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameConsoleSimulator.Utility;
 using NUnit.Framework;
 
@@ -33,6 +34,20 @@ namespace GameConsoleSimulator.Test.Tests
 			
 			Assert.AreEqual(expected: 0.707, actual: normVector.X, delta: 0.02);
 			Assert.AreEqual(expected: 0.707, actual: normVector.Y, delta: 0.02);
+		}
+
+		[Test]
+
+		public static void CalculateMinkowskiSumShouldAddTwoVec2Lists()
+		{
+			var List1 = new List<Vec2<float>> {(1, 0), (0, 1), (0, -1)};
+			var List2 = new List<Vec2<float>> {(0, 0), (1, 1), (1, -1)};
+			
+			HashSet<Vec2<float>> minkowskiSum = Vec2<float>.CalculateMinkowskiSum(List1, List2);
+			HashSet<Vec2<float>> expectedMinkowskiSum = new HashSet<Vec2<float>>{(1, 0), (2, 1), (2, -1), (0, 1), (1, 2), (0, -1), (1, -2)};
+			
+			Assert.AreEqual(expectedMinkowskiSum, minkowskiSum);
+
 		}
 	}
 }
